@@ -58,10 +58,13 @@ requirements:
     - netavark                   # [linux]
     # DNS for containers on user-defined networks (netavark hands off to it).
     # Without it, `podman network create` works but names never resolve.
-    - aardvark-dns               # [linux]
+    # NOTE: aardvark-dns and passt are currently only built for linux-64;
+    #       once their feedstocks add the other Linux platforms these
+    #       selectors should become `# [linux]`.
+    - aardvark-dns               # [linux64]
     # Rootless networking: podman >=5 defaults to pasta and refuses to start
     # rootless containers if it is missing ("could not find pasta").
-    - passt                      # [linux]
+    - passt                      # [linux64]
     - slirp4netns                # [linux]
 
 test:
